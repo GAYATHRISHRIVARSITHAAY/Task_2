@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Login_page</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome">Welcome</string>
+    <string name="lets_get_started">Lets get started</string>
+    <string name="new_customer">New customer?</string>
+    <string name="create_new_account">Create new account</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
