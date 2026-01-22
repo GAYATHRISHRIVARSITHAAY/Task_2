@@ -1,13 +1,12 @@
-package com.example.login_page
+package com.example.task_2
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.task_2.ForgotPasswordActivity
-import com.example.task_2.MainActivity
 
 
 class SignInActivity : AppCompatActivity() {
@@ -16,19 +15,32 @@ class SignInActivity : AppCompatActivity() {
         setContentView(R.layout.signin)
         val forgotbtn = findViewById<TextView>(R.id.idforgotpassword)
         val bck=findViewById<TextView>(R.id.idback)
-        val mail=findViewById<EditText>(R.id.idemail_box).text.toString()
-        val pass=findViewById<EditText>(R.id.idpassword_box).text.toString()
+        val sig=findViewById<Button>(R.id.idsigninbutton)
 
         forgotbtn.setOnClickListener{
             val intent = Intent(this, ForgotPasswordActivity::class.java)
             startActivity(intent)
         }
         bck.setOnClickListener{
-            if(mail.isEmpty() || pass.isEmpty()){
-                Toast.makeText(this, "Fields should not be empty", Toast.LENGTH_SHORT).show()
-            }
             val intent=Intent(this, MainActivity::class.java)
             startActivity(intent)
+        }
+        sig.setOnClickListener{
+            val mailid=findViewById<EditText>(R.id.idemail_box).text.toString()
+            val password=findViewById<EditText>(R.id.idpassword_box).text.toString()
+            if(mailid.isEmpty()||password.isEmpty())
+            {
+                Toast.makeText(this,"Fields cannot be empty",Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            else{
+                if(mailid.equals("user@gmail.com") && password.equals("userpassword")) {
+                    Toast.makeText(this, "Signed in", Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this,"Mail or password is wrong. Check it again",Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 }
