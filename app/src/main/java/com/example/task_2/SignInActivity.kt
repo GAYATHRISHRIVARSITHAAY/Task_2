@@ -2,11 +2,12 @@ package com.example.login_page
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.task_2.ForgotPasswordActivity
+import com.example.task_2.MainActivity
 
 
 class SignInActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class SignInActivity : AppCompatActivity() {
             if(mail.isEmpty() || pass.isEmpty()){
                 Toast.makeText(this, "Fields should not be empty", Toast.LENGTH_SHORT).show()
             }
-            val intent=Intent(this,MainActivity::class.java)
+            val intent=Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

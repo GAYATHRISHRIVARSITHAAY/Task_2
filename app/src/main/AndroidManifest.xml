@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Task2"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.task_2.MainActivity"
 
             android:exported="true"
             android:label="@string/app_name"
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SignInActivity"/>
-        <activity android:name=".SignUpActivity"/>
-        <activity android:name=".ForgotPasswordActivity"/>
-        <activity android:name=".DigitcodeActivity"/>
+        <activity android:name="com.example.task_2.SignUpActivity"/>
+        <activity android:name="com.example.task_2.ForgotPasswordActivity"/>
+        <activity android:name="com.example.task_2.DigitcodeActivity"/>
     </application>
 
 </manifest>
