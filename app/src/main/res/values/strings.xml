@@ -11,4 +11,24 @@
     <string name="cancel">Cancel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_in">Sign in</string>
+    <string name="existing_customer_get_started">Existing customer / Get started</string>
+    <string name="enter_your_password">Enter your Password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="enter_4_digit_code">Enter 4 digit code</string>
+    <string name="a_four_digit_code_should_have_come_to_your_email_address_that_you_indicated">A four-digit code should have come to your email address that you indicated.</string>
+    <string name="lt_back"><![CDATA[< Back]]></string>
+    <string name="forgotpassword">Forgot password?</string>
+    <string name="enter_your_email_for_the_verification_process_we_will_send_code_to_your_email">Enter your email for the verification process, we will send code to your email</string>
+    <string name="email_">Email</string>
+    <string name="type_something_longer_here">Type something longer here...</string>
+    <string name="exit">Exit</string>
+    <string name="sign_in_">Sign in</string>
+    <string name="please_log_in_into_your_account">Please log in into your account</string>
+    <string name="enter_your_email_id">Enter your Email id</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="agree_the_terms_of_use_and_privacy_policy">Agree the terms of use and privacy policy</string>
+    <string name="enter_your_password_">Enter your Password</string>
 </resources>

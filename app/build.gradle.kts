@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.login_page"
+    namespace = "com.example.task_2"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.login_page"
+        applicationId = "com.example.task_2"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
