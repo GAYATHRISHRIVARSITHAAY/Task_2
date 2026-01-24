@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.login_page.R
+import com.example.task_2.R
 
 
 class SignUpActivity : AppCompatActivity() {

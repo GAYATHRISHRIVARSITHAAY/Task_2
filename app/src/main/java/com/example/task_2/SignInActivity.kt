@@ -1,4 +1,4 @@
-package com.example.login_page
+package com.example.task_2
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.task_2.ForgotPasswordActivity
-import com.example.task_2.MainActivity
 
 
 class SignInActivity : AppCompatActivity() {

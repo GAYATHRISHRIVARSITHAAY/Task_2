@@ -2,7 +2,7 @@ package com.example.task_2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.login_page.R
+import com.example.task_2.R
 
 
 class DigitcodeActivity : AppCompatActivity() {
