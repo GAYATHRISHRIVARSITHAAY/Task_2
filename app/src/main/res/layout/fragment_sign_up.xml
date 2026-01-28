@@ -15,7 +15,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="25dp"
+
         />
+
     <TextView
         android:id="@+id/sign_up"
         android:layout_width="wrap_content"
@@ -111,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Agree the terms of use and privacy policy"
-        android:id="@+id/checkbox"
+        android:id="@+id/checkbox1"
         android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@+id/password_box1"
         app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +128,7 @@
         android:background="@drawable/sign_box"
         android:id="@+id/signupbutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox1"
 
         />
 
