@@ -55,14 +55,11 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         signin.setOnClickListener {
             viewModel.onSignInClicked()
         }
-
         createAcc.setOnClickListener {
             viewModel.onCreateAccountClicked()
         }
-
         observeViewModel()
     }
-
     private fun observeViewModel() {
 
         viewModel.navigateToSignIn.observe(viewLifecycleOwner) { shouldNavigate ->
@@ -74,7 +71,6 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
                 viewModel.onSignInNavigated()
             }
         }
-
         viewModel.navigateToSignUp.observe(viewLifecycleOwner) { shouldNavigate ->
             if (shouldNavigate == true) {
                 parentFragmentManager.beginTransaction()
