@@ -125,7 +125,7 @@
         android:text="Sign up"
         android:textColor="@color/white"
         android:layout_marginTop="25dp"
-        android:background="@drawable/sign_box"
+        android:background="@drawable/selectors_box"
         android:id="@+id/signupbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkbox1"
