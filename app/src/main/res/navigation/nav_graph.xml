@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/WelcomeFragment">
+    <fragment
+        android:id="@+id/WelcomeFragment"
+        android:name="com.example.task_2.WelcomeFragment">
+        <action
+            android:id="@+id/welcome_to_signin"
+            app:destination="@id/SignInFragment"/>
+        <action
+            android:id="@+id/welcome_to_signup"
+            app:destination="@id/SignUpFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="com.example.task_2.SignUpFragment">
+        <action
+            android:id="@+id/back_to_welcome_from_signup"
+            app:destination="@id/WelcomeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/SignInFragment"
+        android:name="com.example.task_2.SignInFragment">
+        <action
+            android:id="@+id/back_to_welcome_from_signin"
+            app:destination="@id/WelcomeFragment"/>
+        <action
+            android:id="@+id/signin_to_forgotpassword"
+            app:destination="@id/ForgotpasswordFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/ForgotpasswordFragment"
+        android:name="com.example.task_2.ForgotPasswordFragment">
+        <action
+            android:id="@+id/back_from_forgot"
+            app:destination="@id/SignInFragment"/>
+        <action
+            android:id="@+id/forgotpassword_to_pin"
+            app:destination="@id/DigitcodeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/DigitcodeFragment"
+        android:name="com.example.task_2.DigitCodeFragment">
+        <action
+            android:id="@+id/pin_to_welcome"
+            app:destination="@id/WelcomeFragment"/>
+    </fragment>
+
+
+</navigation>

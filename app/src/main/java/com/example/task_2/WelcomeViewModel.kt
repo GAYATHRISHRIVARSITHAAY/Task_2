@@ -11,18 +11,15 @@ class WelcomeViewModel : ViewModel() {
 
     private val _navigateToSignUp = MutableLiveData<Boolean>()
     val navigateToSignUp: LiveData<Boolean> = _navigateToSignUp
-    fun onSignInNavigated(){
-        _navigateToSignIn.value=false
-    }
-    fun onSignUpNavigated(){
-        _navigateToSignUp.value=false
-    }
-
     fun onSignInClicked() {
         _navigateToSignIn.value = true
     }
 
     fun onCreateAccountClicked() {
         _navigateToSignUp.value = true
+    }
+    fun onNavigationDone() {
+        _navigateToSignIn.value = false
+        _navigateToSignUp.value = false
     }
 }

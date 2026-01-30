@@ -14,14 +14,17 @@ class SignInViewModel : ViewModel() {
         _forgotStatus.value=true
     }
     fun signin(mail:String,password:String){
-        if(mail.isEmpty() || password.isEmpty())
+        if(mail.isEmpty()){
+            _signInStatus.value="no email"
+        }
+        else if(password.isEmpty())
         {
-            _signInStatus.value="Fields must be filled"
+            _signInStatus.value="no password"
 
         }
         else if(!mail.contains("@"))
         {
-            _signInStatus.value="Invalid email"
+            _signInStatus.value="invalid"
         }
         else if(mail.equals("user@gmail.com") && password.equals("userpassword"))
         {
@@ -33,4 +36,8 @@ class SignInViewModel : ViewModel() {
         }
 
     }
+    fun onForgotNavigationDone() {
+        _forgotStatus.value = false
+    }
+
 }
