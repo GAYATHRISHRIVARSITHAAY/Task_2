@@ -11,15 +11,18 @@ class ForgotPasswordViewModel : ViewModel() {
     val navigateNext: LiveData<Boolean> = _navigateNext
     fun conti(mail:String) {
         if(mail.isEmpty()){
-            _msg.value="Email must be filled"
+            _msg.value="no mail"
         }
         else if(!mail.contains("@"))
         {
-            _msg.value="Invalid email"
+            _msg.value="invalid"
         }
         else{
             _navigateNext.value=true
         }
+    }
+    fun next(){
+        _navigateNext.value=false
     }
 
 }

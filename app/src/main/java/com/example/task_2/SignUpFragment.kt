@@ -52,6 +52,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.task_2.viewmodel.SignUpViewModel
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
@@ -66,8 +68,16 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         val emailEt = view.findViewById<EditText>(R.id.password_box)
         val passwordEt = view.findViewById<EditText>(R.id.password_box1)
         val checkBox = view.findViewById<CheckBox>(R.id.checkbox1)
+        val namelayout=view.findViewById<TextInputLayout>(R.id.nameLayout)
+        val maillayout=view.findViewById<TextInputLayout>(R.id.emailLayout)
+        val passwordlayout=view.findViewById<TextInputLayout>(R.id.passwordLayout)
+        val checkboxerror=view.findViewById<TextView>(R.id.checkerror)
 
         signup.setOnClickListener {
+            namelayout.error=null
+            maillayout.error=null
+            passwordlayout.error=null
+            checkboxerror.visibility=View.GONE
             viewModel.signUp(
                 nameEt.text.toString(),
                 emailEt.text.toString(),
@@ -77,7 +87,33 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
 
         viewModel.signUpStatus.observe(viewLifecycleOwner) { message ->
-            Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            if(message.equals("no name"))
+            {
+                namelayout.error="Name field must be filled"
+            }
+            else if(message.equals("no mail"))
+            {
+                maillayout.error="Mail field must be filled"
+            }
+            else if(message.equals("no password"))
+            {
+                passwordlayout.error="Password field must be filled"
+            }
+            else if(message.equals("no check"))
+            {
+                checkboxerror.visibility=View.VISIBLE
+            }
+            else if(message.equals("invalid mail"))
+            {
+                maillayout.error="Invalid email"
+            }
+            else if(message.equals("short"))
+            {
+                passwordlayout.error="Password must be minimum of 6 characters"
+            }
+            else{
+                Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+            }
         }
 
         back.setOnClickListener {

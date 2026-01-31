@@ -15,19 +15,26 @@ class SignUpViewModel : ViewModel() {
         password: String,
         isChecked: Boolean
     ) {
-        if(name.isEmpty() ||email.isEmpty() || password.isEmpty()){
-            _signUpStatus.value="Fields should not be empty"
-        }
-        else if(!email.contains("@"))
+        if(name.isEmpty())
         {
-            _signUpStatus.value="Invalid Email"
+            _signUpStatus.value="no name"
         }
-        else if(password.length<5){
-            _signUpStatus.value="Password must be minimum of 6 characters"
+        else if(email.isEmpty()){
+            _signUpStatus.value="no mail"
+        }
+        else if(password.isEmpty()){
+            _signUpStatus.value="no password"
         }
         else if(!isChecked)
         {
-            _signUpStatus.value="Tick the check box"
+            _signUpStatus.value="no check"
+        }
+        else if(!email.contains("@"))
+        {
+            _signUpStatus.value="invalid mail"
+        }
+        else if(password.length<5){
+            _signUpStatus.value="short"
         }
         else{
             _signUpStatus.value="Signed up successfully!!"

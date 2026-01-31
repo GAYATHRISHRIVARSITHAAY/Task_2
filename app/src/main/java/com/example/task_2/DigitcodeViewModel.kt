@@ -13,7 +13,7 @@ class DigitcodeViewModel : ViewModel() {
     val navigateBack: LiveData<Boolean> = _navigateBack
     fun conform(n1: String, n2: String, n3: String, n4: String) {
         if (n1.isEmpty() || n2.isEmpty() || n3.isEmpty() || n4.isEmpty()) {
-            _conformStatus.value = "Pin value should be entered"
+            _conformStatus.value = "missing"
         } else {
             _conformStatus.value = "Submitted successfully"
         }
@@ -21,6 +21,9 @@ class DigitcodeViewModel : ViewModel() {
     fun cancel() {
         _cancelStatus.value = "Canceled"
         _navigateBack.value = true
+    }
+    fun next(){
+        _navigateBack.value=false
     }
 
 }

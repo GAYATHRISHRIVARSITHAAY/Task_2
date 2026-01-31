@@ -80,6 +80,15 @@
                 android:background="@drawable/pin"
                 android:layout_marginStart="30dp"/>
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pinerror"
+            android:visibility="gone"
+            android:textColor="@android:color/holo_red_dark"
+            android:text="Pin must be entered"
+            android:textSize="15dp"
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
