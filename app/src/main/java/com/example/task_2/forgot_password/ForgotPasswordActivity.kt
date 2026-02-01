@@ -1,4 +1,4 @@
-package com.example.task_2
+package com.example.task_2.forgot_password
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-
+import com.example.task_2.R
+import com.example.task_2.sign_in.SignInActivity
+import com.example.task_2.digitCode.DigitcodeActivity
 
 class ForgotPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +33,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
                 startActivity(intent)
         }
         bck.setOnClickListener{
-            val intent=Intent(this, SignInActivity::class.java)
+            val intent= Intent(this, SignInActivity::class.java)
             startActivity(intent)
         }
     }

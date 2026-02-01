@@ -24,10 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignInActivity"/>
-        <activity android:name="com.example.task_2.SignUpActivity"/>
-        <activity android:name="com.example.task_2.ForgotPasswordActivity"/>
-        <activity android:name="com.example.task_2.DigitcodeActivity"/>
+        <activity android:name=".sign_in.SignInActivity"/>
+        <activity android:name="com.example.task_2.signup.SignUpActivity"/>
+        <activity android:name="com.example.task_2.forgot_password.ForgotPasswordActivity"/>
+        <activity android:name="com.example.task_2.digitCode.DigitcodeActivity"/>
     </application>
 
 </manifest>
