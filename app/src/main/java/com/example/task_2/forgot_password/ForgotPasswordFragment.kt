@@ -1,38 +1,38 @@
-package com.example.task_2
+package com.example.task_2.forgot_password
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.textfield.TextInputLayout
+import com.example.task_2.forgot_password.ForgotPasswordViewModel
+import com.example.task_2.R
+import com.example.task_2.databinding.FragmentForgotPasswordBinding
 
 class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
+    private var _binding: FragmentForgotPasswordBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: ForgotPasswordViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cont = view.findViewById<Button>(R.id.continuebtn)
-        val back = view.findViewById<TextView>(R.id.back2)
-        val emailEt = view.findViewById<EditText>(R.id.email__box)
-        val maillayout=view.findViewById<TextInputLayout>(R.id.emailLayout)
-        cont.setOnClickListener {
-            val mail = emailEt.text.toString()
-            maillayout.error=null
+        _binding = FragmentForgotPasswordBinding.bind(view)
+
+
+        binding.continuebtn.setOnClickListener {
+            val mail = binding.emailBox.text.toString()
+            binding.emailLayout.error = null
+
             viewModel.conti(mail)
         }
         viewModel.msg.observe(viewLifecycleOwner) {
             message ->
             if(message.equals("invalid"))
             {
-                maillayout.error="Invalid email"
+                binding.emailLayout.error="Invalid email"
             }
             else if(message.equals("no mail"))
             {
-                maillayout.error="Mail field must be filled"
+                binding.emailLayout.error="Mail field must be filled"
             }
         }
         viewModel.navigateNext.observe(viewLifecycleOwner) {
@@ -42,11 +42,16 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
                 viewModel.next()
             }
         }
-        back.setOnClickListener {
+        binding.back2.setOnClickListener {
            findNavController().popBackStack()
         }
 
 
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
 }

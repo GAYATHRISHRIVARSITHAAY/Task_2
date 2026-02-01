@@ -1,4 +1,4 @@
-package com.example.task_2
+package com.example.task_2.forgot_password
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

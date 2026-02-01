@@ -1,4 +1,4 @@
-package com.example.task_2.viewmodel
+package com.example.task_2.signup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

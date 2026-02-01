@@ -1,31 +1,28 @@
-package com.example.task_2
+package com.example.task_2.sign_in
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.task_2.viewmodel.DigitcodeViewModel
-import com.example.task_2.viewmodel.SignInViewModel
-import com.google.android.material.textfield.TextInputLayout
-
+import com.example.task_2.R
+import com.example.task_2.databinding.FragmentSignInBinding
+import com.example.task_2.sign_in.SignInViewModel
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
+    private var _binding: FragmentSignInBinding? = null
+    private val binding get() = _binding!!
     private val viewModel: SignInViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val forg=view.findViewById<TextView>(R.id.idforgotpassword)
-        val signin=view.findViewById<Button>(R.id.idsigninbutton)
-        val back=view.findViewById<TextView>(R.id.idback)
-        val maillayout=view.findViewById<TextInputLayout>(R.id.emailLayout)
-        val passwordlayout=view.findViewById<TextInputLayout>(R.id.passwordLayout)
-        forg.setOnClickListener{
+        _binding = FragmentSignInBinding.bind(view)
+        //val forgot=view.findViewById<Button>(R.id.idforgotpassword)
+        //val signin=view.findViewById<Button>(R.id.idsigninbutton)
+        //val back=view.findViewById<TextView>(R.id.idback)
+        //val maillayout=view.findViewById<TextInputLayout>(R.id.emailLayout)
+        //val passwordlayout=view.findViewById<TextInputLayout>(R.id.passwordLayout)
+        binding.idforgotpassword.setOnClickListener{
             viewModel.forgot()
 
         }
@@ -41,36 +38,40 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 //                    .commit()
             }
         }
-        signin.setOnClickListener{
-            maillayout.error=null
-            passwordlayout.error=null
-            val mail=view.findViewById<EditText>(R.id.idemail_box).text.toString()
-            val password=view.findViewById<EditText>(R.id.idpassword_box).text.toString()
+        binding.idsigninbutton.setOnClickListener{
+            binding.emailLayout.error=null
+            binding.passwordLayout.error=null
+            val mail=binding.idemailBox.text.toString()
+            val password=binding.idpasswordBox.text.toString()
             viewModel.signin(mail,password)
         }
         viewModel.signInStatus.observe(viewLifecycleOwner){
             message->
             if(message.equals("no email"))
             {
-                maillayout.error="Mail field must be filled"
+                binding.emailLayout.error="Mail field must be filled"
             }
             else if(message.equals("no password"))
             {
-                passwordlayout.error="Password field must be filled"
+                binding.passwordLayout.error="Password field must be filled"
             }
             else if(message.equals("invalid"))
             {
-                maillayout.error="Invalid mail"
+                binding.emailLayout.error="Invalid mail"
             }
             else{
-                Toast.makeText(requireContext(),message,Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(),message, Toast.LENGTH_SHORT).show()
             }
         }
-        back.setOnClickListener{
+        binding.idback.setOnClickListener{
             findNavController().popBackStack()
             //parentFragmentManager.popBackStack()
         }
 
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding=null
     }
 }

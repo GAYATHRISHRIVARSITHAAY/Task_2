@@ -1,4 +1,4 @@
-package com.example.task_2.viewmodel
+package com.example.task_2.sign_in
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,7 @@ class SignInViewModel : ViewModel() {
 
     private val _signInStatus = MutableLiveData<String>()
     val signInStatus: LiveData<String> = _signInStatus
-    private val _forgotStatus=MutableLiveData<Boolean>()
+    private val _forgotStatus= MutableLiveData<Boolean>()
     val forgotStatus: LiveData<Boolean> = _forgotStatus
     fun forgot(){
         _forgotStatus.value=true
