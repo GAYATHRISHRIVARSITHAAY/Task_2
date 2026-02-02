@@ -8,8 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.task_2.forgot_password.ForgotPasswordViewModel
 import com.example.task_2.R
 import com.example.task_2.databinding.FragmentForgotPasswordBinding
+import com.example.task_2.listeners.FragmentClickListener
 
-class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
+class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password), FragmentClickListener{
     private var _binding: FragmentForgotPasswordBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ForgotPasswordViewModel by viewModels()
@@ -19,10 +20,7 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
 
 
         binding.continuebtn.setOnClickListener {
-            val mail = binding.emailBox.text.toString()
-            binding.emailLayout.error = null
-
-            viewModel.conti(mail)
+            onClick(it.id)
         }
         viewModel.msg.observe(viewLifecycleOwner) {
             message ->
@@ -43,10 +41,24 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
             }
         }
         binding.back2.setOnClickListener {
-           findNavController().popBackStack()
+           onClick(it.id)
         }
 
 
+    }
+
+    override fun onClick(viewId: Int) {
+        when(viewId){
+            R.id.continuebtn->{
+                val mail = binding.emailBox.text.toString()
+                binding.emailLayout.error = null
+
+                viewModel.conti(mail)
+            }
+            R.id.back2->{
+                findNavController().popBackStack()
+            }
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
