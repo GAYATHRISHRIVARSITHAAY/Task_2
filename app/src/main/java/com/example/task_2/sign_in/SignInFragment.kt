@@ -8,9 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.task_2.R
 import com.example.task_2.databinding.FragmentSignInBinding
+import com.example.task_2.listeners.FragmentClickListener
 import com.example.task_2.sign_in.SignInViewModel
 
-class SignInFragment : Fragment(R.layout.fragment_sign_in) {
+class SignInFragment : Fragment(R.layout.fragment_sign_in), FragmentClickListener {
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SignInViewModel by viewModels()
@@ -23,7 +24,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         //val maillayout=view.findViewById<TextInputLayout>(R.id.emailLayout)
         //val passwordlayout=view.findViewById<TextInputLayout>(R.id.passwordLayout)
         binding.idforgotpassword.setOnClickListener{
-            viewModel.forgot()
+            onClick(it.id)
+
 
         }
         viewModel.forgotStatus.observe(viewLifecycleOwner){
@@ -39,11 +41,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             }
         }
         binding.idsigninbutton.setOnClickListener{
-            binding.emailLayout.error=null
-            binding.passwordLayout.error=null
-            val mail=binding.idemailBox.text.toString()
-            val password=binding.idpasswordBox.text.toString()
-            viewModel.signin(mail,password)
+            onClick(it.id)
         }
         viewModel.signInStatus.observe(viewLifecycleOwner){
             message->
@@ -64,11 +62,30 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             }
         }
         binding.idback.setOnClickListener{
-            findNavController().popBackStack()
+            onClick(it.id)
+            //findNavController().popBackStack()
             //parentFragmentManager.popBackStack()
         }
 
 
+    }
+
+    override fun onClick(viewId: Int) {
+        when(viewId){
+            R.id.idback->{
+                findNavController().popBackStack()
+            }
+            R.id.idsigninbutton->{
+                binding.emailLayout.error=null
+                binding.passwordLayout.error=null
+                val mail=binding.idemailBox.text.toString()
+                val password=binding.idpasswordBox.text.toString()
+                viewModel.signin(mail,password)
+            }
+            R.id.idforgotpassword->{
+                viewModel.forgot()
+            }
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()

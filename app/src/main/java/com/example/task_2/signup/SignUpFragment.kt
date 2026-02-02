@@ -8,9 +8,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.task_2.R
 import com.example.task_2.databinding.FragmentSignUpBinding
+import com.example.task_2.listeners.FragmentClickListener
 import com.example.task_2.signup.SignUpViewModel
 
-class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
+class SignUpFragment : Fragment(R.layout.fragment_sign_up),FragmentClickListener {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SignUpViewModel by viewModels()
@@ -31,17 +32,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 //        val checkboxerror=view.findViewById<TextView>(R.id.checkerror)
 
         binding.signupbutton.setOnClickListener {
-            binding.nameLayout.error = null
-            binding.emailLayout.error = null
-            binding.passwordLayout.error = null
-            binding.checkerror.visibility = View.GONE
-
-            viewModel.signUp(
-                binding.emailBox.text.toString(),
-                binding.passwordBox.text.toString(),
-                binding.passwordBox1.text.toString(),
-                binding.checkbox1.isChecked
-            )
+            onClick(it.id)
         }
 //        signup.setOnClickListener {
 //            namelayout.error=null
@@ -87,9 +78,30 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
 
         binding.back1.setOnClickListener {
-            findNavController().popBackStack()
-
+//            findNavController().popBackStack()
+            onClick(it.id)
             //parentFragmentManager.popBackStack()
+        }
+    }
+
+    override fun onClick(viewId: Int) {
+        when(viewId){
+            R.id.back1->{
+                findNavController().popBackStack()
+            }
+            R.id.signupbutton->{
+                binding.nameLayout.error = null
+                binding.emailLayout.error = null
+                binding.passwordLayout.error = null
+                binding.checkerror.visibility = View.GONE
+
+                viewModel.signUp(
+                    binding.emailBox.text.toString(),
+                    binding.passwordBox.text.toString(),
+                    binding.passwordBox1.text.toString(),
+                    binding.checkbox1.isChecked
+                )
+            }
         }
     }
     override fun onDestroyView() {
